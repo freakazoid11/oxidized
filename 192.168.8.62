@@ -1,0 +1,485 @@
+! SW version    1.3.0.62 ( date  02-May-2013 time  14:55:01 )
+! Boot version    1.1.0.6 ( date  11-May-2011 time  18:31:00 )
+! HW version    V02
+! Image  Filename   Version     Date                    Status
+! -----  ---------  ---------   ---------------------   -----------
+! 1      image-1    1.3.0.62    02-May-2013  14:55:01   Active* 
+! 2      image-2    1.3.0.62    02-May-2013  14:55:01   Not active
+! 
+! "*" designates that the image was selected for the next boot
+! 
+config-file-header
+switch7063a6
+v1.3.0.62 / R750_NIK_1_3_647_260
+CLI v1.0
+set system mode switch 
+
+file SSD indicator encrypted
+@
+ssd-control-start
+ssd config
+ssd file passphrase control unrestricted
+no ssd file integrity control
+ssd-control-end cb0a3fdb1f3a1af4e4430033719968c0
+!
+no cdp run
+vlan database
+vlan 10-28,30-37,41,52-53,55,68,79-94,97-98,100-102,159-175,192
+vlan 200-214,219,230-241,501,642-643,852-853,1001
+exit
+voice vlan id 11
+voice vlan state disabled
+voice vlan oui-table add 0001e3 Siemens_AG_phone________
+voice vlan oui-table add 00036b Cisco_phone_____________
+voice vlan oui-table add 00096e Avaya___________________
+voice vlan oui-table add 000fe2 H3C_Aolynk______________
+voice vlan oui-table add 0060b9 Philips_and_NEC_AG_phone
+voice vlan oui-table add 00d01e Pingtel_phone___________
+voice vlan oui-table add 00e075 Polycom/Veritel_phone___
+voice vlan oui-table add 00e0bb 3Com_phone______________
+hostname switch7063a6
+ip ssh server
+snmp-server server
+snmp-server contact public
+snmp-server community public ro 192.168.9.219 mask 255.255.255.0 view Default
+snmp-server group public v2 read Default
+clock timezone " " 3
+sntp unicast client enable
+sntp unicast client poll
+sntp server pool.ntp.org
+ip telnet server
+!
+interface vlan 1
+ no ip address dhcp
+!
+interface vlan 10
+ name "Office Network"
+ ip address 192.168.8.62 255.255.255.0
+!
+interface vlan 11
+ name "Voice VLAN - Asterisk"
+!
+interface vlan 12
+ name "Instant APs 1"
+!
+interface vlan 13
+ name "Instant APs 2"
+!
+interface vlan 14
+ name "Instant APs 3"
+!
+interface vlan 15
+ name "Instant APs 4"
+!
+interface vlan 16
+ name "Instant APs 5"
+!
+interface vlan 17
+ name "Instant APs 6"
+!
+interface vlan 18
+ name "Instant APs 7"
+!
+interface vlan 19
+ name "Instant APs 8"
+!
+interface vlan 20
+ name "Instant APs 9"
+!
+interface vlan 21
+ name "Instant APs 10"
+!
+interface vlan 22
+ name "Instant APs 11"
+!
+interface vlan 23
+ name "Instant APs 12"
+!
+interface vlan 24
+ name "Instant APs 13"
+!
+interface vlan 25
+ name "Instant APs 14"
+!
+interface vlan 26
+ name "Instant APs 15"
+!
+interface vlan 27
+ name "Instant APs 16"
+!
+interface vlan 28
+ name CPPM_ACCESS
+!
+interface vlan 30
+ name OpenShift-4-VLAN
+!
+interface vlan 31
+ name RouterOS-Mgmt-VLAN
+!
+interface vlan 32
+ name Versa-Hub-Mgmt-Network
+!
+interface vlan 33
+ name Versa-Controller-WAN
+!
+interface vlan 34
+ name Versa-FlexVNF-1
+!
+interface vlan 35
+ name Versa-FlexVNF-2
+!
+interface vlan 36
+ name Versa-Control-Network
+!
+interface vlan 37
+ name New-K8s-VLAN
+!
+interface vlan 41
+ name TTNetModem2LAN
+!
+interface vlan 52
+ name Edge-Mgmt
+!
+interface vlan 53
+ name "SP Management VLAN"
+!
+interface vlan 55
+ name Cisco9800Data
+!
+interface vlan 68
+ name "Openshift 3 Mgmt"
+!
+interface vlan 79
+ name CLD_Mgmt_Capsule
+!
+interface vlan 80
+ name "CLD-Single-AOS8 Client"
+!
+interface vlan 81
+ name CLD-Aruba
+!
+interface vlan 82
+ name CLD-Cisco
+!
+interface vlan 83
+ name CLD-C9800
+!
+interface vlan 84
+ name CLD-ArubaOS8
+!
+interface vlan 85
+ name CLD-Cisco9800-Capsule
+!
+interface vlan 86
+ name CLD-Core-Aruba-AP
+!
+interface vlan 87
+ name "CLD-C9800 AP"
+!
+interface vlan 88
+ name "CLD-Cisco AP"
+!
+interface vlan 89
+ name CLD-Core-AOS8-AP
+!
+interface vlan 90
+ name "CLD-Single-AOS8 AP"
+!
+interface vlan 91
+ name "SP Aruba AP Block"
+!
+interface vlan 92
+ name "SP Client Subnet 1"
+!
+interface vlan 93
+ name "SP Client Subnet 2"
+!
+interface vlan 94
+ name Fatih_Test_Vlan
+!
+interface vlan 97
+ name Legacy-Cisco2500-AP
+!
+interface vlan 98
+ name "ALE Calibraiton AP VLAN"
+!
+interface vlan 100
+ name "AP VLAN 100"
+!
+interface vlan 101
+ name "AP VLAN 101"
+!
+interface vlan 102
+ name "AP VLAN 102"
+!
+interface vlan 159
+ name "VALVEN - Mgmt VLAN"
+!
+interface vlan 160
+ name "VALVEN - CPK Mgmt"
+!
+interface vlan 161
+ name "VALVEN - VLAN161"
+!
+interface vlan 162
+ name "VALVEN - VLAN162"
+!
+interface vlan 163
+ name "VALVEN - VLAN163"
+!
+interface vlan 164
+ name "VALVEN - VLAN164"
+!
+interface vlan 165
+ name "VALVEN - VLAN165"
+!
+interface vlan 166
+ name "VALVEN - VLAN166"
+!
+interface vlan 167
+ name "VALVEN - VLAN167"
+!
+interface vlan 168
+ name "VALVEN - VLAN168"
+!
+interface vlan 169
+ name "VALVEN - VLAN169"
+!
+interface vlan 170
+ name "VALVEN - VLAN170"
+!
+interface vlan 171
+ name "VALVEN - CPK-TEST"
+!
+interface vlan 172
+ name "VALVEN - VLAN172"
+!
+interface vlan 173
+ name "VALVEN - VLAN173"
+!
+interface vlan 174
+ name "VALVEN - VLAN174"
+!
+interface vlan 175
+ name "VALVEN - VLAN175"
+!
+interface vlan 192
+ name "CGNAT Public Network"
+!
+interface vlan 200
+ name TWAG_200
+!
+interface vlan 201
+ name TWAG_201
+!
+interface vlan 202
+ name TWAG_202
+!
+interface vlan 203
+ name TWAG_203
+!
+interface vlan 204
+ name TWAG_204
+!
+interface vlan 205
+ name TWAG_205
+!
+interface vlan 206
+ name TWAG_206
+!
+interface vlan 207
+ name TWAG_207
+!
+interface vlan 208
+ name TWAG_208
+!
+interface vlan 209
+ name TWAG_209
+!
+interface vlan 210
+ name TWAG_210
+!
+interface vlan 211
+ name TWAG_211
+!
+interface vlan 212
+ name TWAG_212
+!
+interface vlan 213
+ name TWAG_213
+!
+interface vlan 214
+ name TWAG_214
+!
+interface vlan 219
+ name TWAG_219
+!
+interface vlan 230
+ name TWAG_230
+!
+interface vlan 231
+ name TWAG_231
+!
+interface vlan 232
+ name TWAG_232
+!
+interface vlan 233
+ name TWAG_233
+!
+interface vlan 234
+ name TWAG_234
+!
+interface vlan 235
+ name TWAG_235
+!
+interface vlan 236
+ name TWAG_236
+!
+interface vlan 237
+ name TWAG_237
+!
+interface vlan 238
+ name TWAG_238
+!
+interface vlan 239
+ name TWAG_239
+!
+interface vlan 240
+ name TWAG_240
+!
+interface vlan 241
+ name TWAG_241
+!
+interface vlan 501
+ name "Edge Central"
+!
+interface vlan 642
+ name WAN_TTNET_2_VLAN_PPPOE
+!
+interface vlan 643
+ name WAN_TTNET_2_VLAN_LAN
+!
+interface vlan 852
+ name WAN_TTNET_1_VLAN_PPPOE
+!
+interface vlan 853
+ name WAN_TTNET_1_VLAN_LAN
+!
+interface vlan 1001
+ name kktcell
+!
+interface gigabitethernet1
+ description "ALRAI - Left Port"
+ switchport trunk allowed vlan add 11-27,30-37,41,52-53,55,68,79-94
+ switchport trunk allowed vlan add 97-98,100-102,159,192,200-214,219
+ switchport trunk allowed vlan add 230-241,501,642-643,1001
+ switchport trunk native vlan 10
+!
+interface gigabitethernet2
+ switchport mode access
+ switchport access vlan 643
+!
+interface gigabitethernet3
+ switchport trunk allowed vlan add 643
+ switchport trunk native vlan 41
+!
+interface gigabitethernet4
+ switchport trunk native vlan 19
+!
+interface gigabitethernet5
+ description "ALRISCHA - Right Bottom Port"
+ switchport trunk allowed vlan add 37
+ switchport trunk native vlan 10
+!
+interface gigabitethernet6
+ description "ALRAMI - Near VGA"
+ switchport trunk allowed vlan add 30,37,52-53
+ switchport trunk native vlan 10
+!
+interface gigabitethernet7
+ description "ALRAKIS - Away from VGA"
+ switchport trunk native vlan 10
+!
+interface gigabitethernet8
+ description "ALRAKIS - Near VGA"
+ switchport mode access
+ switchport access vlan 30
+!
+interface gigabitethernet9
+ shutdown
+ switchport mode access
+ switchport access vlan 79
+!
+interface gigabitethernet10
+ switchport mode access
+ switchport access vlan 85
+!
+interface gigabitethernet11
+ switchport mode access
+ switchport access vlan 10
+!
+interface gigabitethernet12
+ description "CAPELLA ETH2"
+ switchport trunk allowed vlan add 30
+ switchport trunk native vlan 10
+!
+interface gigabitethernet13
+ description "TWAG - HPE DL380 - ILO"
+ switchport trunk native vlan 10
+!
+interface gigabitethernet14
+ description "TWAG-HPE_DL380-ETH1 rear-left-card"
+ switchport trunk allowed vlan add 203-214,230-241
+ switchport trunk native vlan 10
+!
+interface gigabitethernet15
+ description "TWAG-HPE_DL380-ETH2 rear-left-card"
+ switchport trunk allowed vlan add 30,203-214,230-241
+ switchport trunk native vlan 10
+!
+interface gigabitethernet16
+ description "TWAG-HPE_DL380-ETH3 rear-left-card"
+ switchport trunk allowed vlan add 230-241
+ switchport trunk native vlan 10
+!
+interface gigabitethernet17
+ description "TWAG-HPE_DL380-ETH4 rear-left-card"
+ switchport trunk allowed vlan add 230-241
+ switchport trunk native vlan 10
+!
+interface gigabitethernet18
+ description "TWAG-HPE_DL380-ETH1 next-to ILO"
+ switchport trunk allowed vlan add 201-214,230-241
+ switchport trunk native vlan 200
+!
+interface gigabitethernet19
+ switchport trunk native vlan 10
+!
+interface gigabitethernet20
+ switchport trunk native vlan 10
+!
+interface gigabitethernet21
+ switchport trunk native vlan 10
+!
+interface gigabitethernet22
+ description "VALVEN - TP-LINK-1"
+ switchport trunk allowed vlan add 160-175
+ switchport trunk native vlan 159
+!
+interface gigabitethernet23
+ description "TP-LINK-2 Network Devices"
+ switchport trunk allowed vlan add 28,52-53,80-84,91-94,100
+ switchport trunk native vlan 10
+!
+interface gigabitethernet24
+ description Aruba2530-Access-SW
+ switchport trunk allowed vlan add 11-27,41,53,55,80-81,84,86-94
+ switchport trunk allowed vlan add 97-98,100-102,159-175,192,501
+ switchport trunk allowed vlan add 642-643,852-853,1001
+ switchport trunk native vlan 10
+!
+interface gigabitethernet28
+ switchport mode access
+!
+exit
+ip default-gateway 192.168.8.1

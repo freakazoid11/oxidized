@@ -1,0 +1,416 @@
+!  /ws/swbuildm/rel_orlando_qaoff/code/build/lakes(swbuildm_rel_orlando_qaoff_rel_
+! orlando)
+!                 Jan 30 2015 18:50:46
+!                 YA.15.16.0006
+!                 72
+! Boot Image:     Primary
+! Transceiver Technical Information:
+! 
+!                      Product      Serial             Part
+!  Port    Type        Number       Number             Number
+!  ------- ----------- ------------ ------------------ ----------
+! 
+! 
+! ----------------- ------------ -------- --------------
+! Primary Image    :    10587527 01/30/15 YA.15.16.0006        
+! Secondary Image  :    10587527 01/30/15 YA.15.16.0006       
+! 
+! Boot ROM Version : YA.15.17
+! Default Boot     : Primary
+! 
+!  Status and Counters - General System Information
+! 
+!   System Name        : HP-2530-24G-PoEP                                
+!   System Contact     : 
+!   System Location    : 
+! 
+!   MAC Age Time (sec) : 300    
+! 
+!   Time Zone          : 120  
+!   Daylight Time Rule : Continental-US-and-Canada 
+! 
+!   Software revision  : YA.15.16.0006        Base MAC Addr      : 1402ec-1266e0
+!   ROM Version        : YA.15.17             Serial Number      : CN61FP4318  
+! 
+! 
+! 
+Running configuration:
+
+; J9773A Configuration Editor; Created on release #YA.15.16.0006
+; Ver #06:04.9c.63.ff.37.27:12
+hostname "HP-2530-24G-PoEP"
+console idle-timeout 600
+console idle-timeout serial-usb 600
+password minimum-length 8
+time daylight-time-rule continental-us-and-canada
+time timezone 120
+ip default-gateway 192.168.8.1
+interface 3
+   power-over-ethernet high
+   exit
+interface 5
+   poe-value 33
+   exit
+interface 7
+   power-over-ethernet high
+   exit
+interface 10
+   no power-over-ethernet
+   poe-value 33
+   exit
+snmp-server community "l9pWozcS" unrestricted
+snmp-server community "public" operator
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 1-6,8-24,27
+   untagged 7,25-26,28
+   no ip address
+   exit
+vlan 10
+   name "Network Device VLAN"
+   untagged 1,6
+   tagged 8,14,24
+   ip address 192.168.8.63 255.255.255.0
+   exit
+vlan 11
+   name "Client VLAN"
+   untagged 2
+   tagged 1,8,14,24
+   no ip address
+   exit
+vlan 12
+   name "IAP VLAN 1"
+   tagged 1
+   no ip address
+   exit
+vlan 13
+   name "IAP VLAN 2"
+   tagged 1
+   no ip address
+   exit
+vlan 14
+   name "IAP VLAN 3"
+   tagged 1
+   no ip address
+   exit
+vlan 15
+   name "IAP VLAN 4"
+   untagged 9
+   tagged 1
+   no ip address
+   exit
+vlan 16
+   name "IAP VLAN 5"
+   untagged 8,14,24
+   tagged 1
+   no ip address
+   exit
+vlan 17
+   name "IAP VLAN 6"
+   untagged 19
+   tagged 1
+   no ip address
+   exit
+vlan 18
+   name "IAP VLAN 7"
+   untagged 16,22
+   tagged 1
+   no ip address
+   exit
+vlan 19
+   name "IAP VLAN 8"
+   untagged 3
+   tagged 1
+   no ip address
+   exit
+vlan 20
+   name "IAP VLAN 9"
+   untagged 15
+   tagged 1
+   no ip address
+   exit
+vlan 21
+   name "IAP VLAN 10"
+   untagged 17
+   tagged 1
+   no ip address
+   exit
+vlan 22
+   name "IAP VLAN 11"
+   untagged 18
+   tagged 1
+   no ip address
+   exit
+vlan 23
+   name "IAP VLAN 12"
+   untagged 13,21,23
+   tagged 1
+   no ip address
+   exit
+vlan 24
+   name "IAP VLAN 13"
+   untagged 4,10
+   tagged 1
+   no ip address
+   exit
+vlan 25
+   name "IAP VLAN 14"
+   untagged 20
+   tagged 1
+   no ip address
+   exit
+vlan 26
+   name "IAP VLAN 15"
+   untagged 27
+   tagged 1
+   no ip address
+   exit
+vlan 27
+   name "IAP VLAN 16"
+   tagged 1
+   no ip address
+   exit
+vlan 28
+   name "CPPM_ACCESS"
+   tagged 1
+   no ip address
+   exit
+vlan 29
+   name "RouterOS Data"
+   tagged 1,22
+   no ip address
+   exit
+vlan 30
+   name "KVM-K8S VLAN"
+   tagged 1,23
+   no ip address
+   exit
+vlan 31
+   name "RouterOS Mgmt"
+   tagged 1
+   no ip address
+   exit
+vlan 41
+   name "TTNetModem2LAN"
+   tagged 1,6
+   no ip address
+   exit
+vlan 51
+   name "Zone Management VLAN"
+   tagged 1,23
+   no ip address
+   exit
+vlan 52
+   name "Edge Management VLAN"
+   tagged 1,15,24
+   no ip address
+   exit
+vlan 53
+   name "SP Management VLAN"
+   tagged 1,10,23-24
+   no ip address
+   exit
+vlan 55
+   name "Cisco 9800 WLC"
+   tagged 1
+   no ip address
+   exit
+vlan 68
+   name "OpenShift Mgmt VLAN"
+   tagged 1,23-24
+   no ip address
+   exit
+vlan 69
+   name "OpenShift_4_Mgmt_VLAN "
+   tagged 1,23-24
+   no ip address
+   exit
+vlan 86
+   name "CLD-Core-Aruba-AP"
+   tagged 1
+   no ip address
+   exit
+vlan 87
+   name "CLD9800_rndm_prt"
+   untagged 11
+   tagged 1
+   no ip address
+   exit
+vlan 88
+   name "CLD-Cisco AP"
+   untagged 5
+   tagged 1
+   no ip address
+   exit
+vlan 89
+   name "CLD_ArubaOS8"
+   untagged 12
+   tagged 1
+   no ip address
+   exit
+vlan 90
+   name "CLD-Single-AOS8 AP"
+   no ip address
+   exit
+vlan 91
+   name "SP Cisco Client Vlan-1"
+   tagged 24
+   no ip address
+   exit
+vlan 92
+   name "LEG-Cisco"
+   tagged 1
+   no ip address
+   exit
+vlan 93
+   name "SP Aruba Client Vlan-2"
+   tagged 24
+   no ip address
+   exit
+vlan 94
+   name "SP Aruba Client Vlan-3"
+   tagged 24
+   no ip address
+   exit
+vlan 97
+   name "Legacy-Cisco2500-AP"
+   tagged 1
+   no ip address
+   exit
+vlan 100
+   name "Edge CL2 Test VLAN"
+   tagged 1,22,24
+   no ip address
+   exit
+vlan 101
+   name "Spectrum Local Bridge Test VLAN"
+   tagged 1,3,17,23-24
+   no ip address
+   exit
+vlan 103
+   name "k8s-R5"
+   tagged 1,15,23
+   no ip address
+   exit
+vlan 104
+   name "k8s R5 - Public"
+   tagged 1,24
+   no ip address
+   exit
+vlan 109
+   name "VLAN109"
+   no ip address
+   exit
+vlan 159
+   name "Partner Mgmt VLAN"
+   tagged 1,6,24
+   ip address 192.168.80.99 255.255.255.0
+   exit
+vlan 201
+   name "TWAG_201"
+   tagged 1,4
+   no ip address
+   exit
+vlan 202
+   name "TWAG_202"
+   tagged 1,4
+   no ip address
+   exit
+vlan 203
+   name "TWAG_203"
+   tagged 1,4
+   no ip address
+   exit
+vlan 204
+   name "TWAG_204"
+   tagged 1,4
+   no ip address
+   exit
+vlan 205
+   name "TWAG_205"
+   tagged 1,4
+   no ip address
+   exit
+vlan 206
+   name "TWAG_206"
+   tagged 1,4
+   no ip address
+   exit
+vlan 207
+   name "TWAG_207"
+   tagged 1,4
+   no ip address
+   exit
+vlan 208
+   name "TWAG_208"
+   tagged 1,4
+   no ip address
+   exit
+vlan 209
+   name "TWAG_209"
+   tagged 1,4
+   no ip address
+   exit
+vlan 210
+   name "TWAG_210"
+   tagged 1,4
+   no ip address
+   exit
+vlan 211
+   name "TWAG_211"
+   tagged 1,4
+   no ip address
+   exit
+vlan 212
+   name "TWAG_212"
+   tagged 1,4
+   no ip address
+   exit
+vlan 213
+   name "TWAG_213"
+   tagged 1,4
+   no ip address
+   exit
+vlan 214
+   name "TWAG_214"
+   tagged 1,4
+   no ip address
+   exit
+vlan 219
+   name "TWAG_219"
+   tagged 1,4,24
+   no ip address
+   exit
+vlan 549
+   name "New_Vlan_vdf"
+   tagged 1,10,24
+   no ip address
+   exit
+vlan 642
+   name "WAN_TTNET_2_VLAN_PPOE"
+   no ip address
+   exit
+vlan 643
+   name "WAN_TTNET_2_VLAN_LAN"
+   tagged 1
+   no ip address
+   exit
+vlan 852
+   name "WAN_TTNET_1_VLAN_PPPOE"
+   tagged 1,6
+   no ip address
+   exit
+vlan 853
+   name "WAN_TTNET_1_VLAN_LAN"
+   tagged 1,6
+   no ip address
+   exit
+management-vlan 10
+spanning-tree vlan
+ 41,55,68-69,86-90,94,97,103-104,109,159,201-214,219,549,643,852-853 disable
+no tftp server
+no dhcp config-file-update
+no dhcp image-file-update
+password manager
+password operator
+
